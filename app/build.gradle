@@ -1,0 +1,22 @@
+apply plugin: 'com.android.application'
+
+android {
+    defaultConfig {
+        compileSdk 33
+        applicationId "wtf.x.xposed.telegram_disable_stories"
+        minSdkVersion 19
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+    }
+
+    compileOptions {
+        incremental false
+    }
+
+    namespace 'wtf.x.xposed.telegram_disable_stories'
+}
+
+dependencies {
+    compileOnly fileTree(include: ['*.jar'], dir: 'libs')
+}
