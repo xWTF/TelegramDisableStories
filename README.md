@@ -3,7 +3,7 @@ Yet another simple Xposed module, which disables Stories feature in Telegram off
 
 I don't want to build Telegram myself, or use 3rd party apps, or cancel Premium subscription (I hate ADs in channels), so I made this.
 
-Tested with `LSPosed 1.8.6`, `Telegram 10.0.5`.
+Tested with `LSPosed 1.9.2`, `Telegram 10.10.0`.
 
 ## How to use
 

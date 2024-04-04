@@ -7,15 +7,17 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 public class EventListener implements IXposedHookLoadPackage {
     @Override
-    @SuppressWarnings("deprecation")
-    public void handleLoadPackage(final LoadPackageParam aparam) throws Throwable {
+    public void handleLoadPackage(final LoadPackageParam aparam) {
         if (!"org.telegram.messenger".equals(aparam.packageName)) {
             return;
         }
-        XposedHelpers.findAndHookMethod("org.telegram.messenger.MessagesController", aparam.classLoader, "storiesEnabled", new XC_MethodHook() {
+        XposedHelpers.findAndHookMethod("android.content.SharedPreferences", aparam.classLoader, "getString", String.class, String.class, new XC_MethodHook() {
             @Override
-            protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-                param.setResult(false);
+            protected void beforeHookedMethod(MethodHookParam param) {
+                // It's a preference, I don't find a switch do disable it tho
+                if ("storiesPosting".equals(param.args[0]) || "storiesEntities".equals(param.args[0])) {
+                    param.setResult("disabled");
+                }
             }
         });
         XposedHelpers.findAndHookMethod("org.telegram.ui.Stories.StoriesController", aparam.classLoader, "hasStories", new XC_MethodHook() {
