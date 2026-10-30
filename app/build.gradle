@@ -1,20 +1,24 @@
-apply plugin: 'com.android.application'
+plugins {
+    id 'com.android.application'
+}
 
 android {
+    namespace = 'wtf.x.xposed.telegram_disable_stories'
+    compileSdk = 33
+    enableKotlin = false
+
     defaultConfig {
-        compileSdk 33
-        applicationId "wtf.x.xposed.telegram_disable_stories"
-        minSdkVersion 19
-        targetSdkVersion 33
-        versionCode 3
-        versionName "1.2"
+        applicationId = "wtf.x.xposed.telegram_disable_stories"
+        minSdk = 19
+        targetSdk = 33
+        versionCode = 4
+        versionName = "1.3"
     }
 
     compileOptions {
-        incremental false
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
-
-    namespace 'wtf.x.xposed.telegram_disable_stories'
 }
 
 dependencies {
